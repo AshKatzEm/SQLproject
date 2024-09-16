@@ -80,7 +80,7 @@ clicked = st.button('Try out the Predictor?')
 
 
 
-if (clicked) and re.compile("[1-2][0-9][0-9][0-9][0-1][0-9][0-3][0-9]").match(date):
+if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
 
     #create empty df
     row = {}
