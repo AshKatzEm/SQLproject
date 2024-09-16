@@ -58,10 +58,10 @@ st.write("If you want to see the prediction for a game without any descriptors, 
 
 #For the model input
 selected_features = list(df.columns) #36
-selected_features.remove(['game_title', 'esrb_rating', 'content_descriptors',
+selected_features = [ele for ele in selected_features if ele not in ['game_title', 'esrb_rating', 'content_descriptors',
        'interactive_elements', 'content_summary', 'platform', 'release_date',
        'updated', 'developers', 'genres', 'publisher',
-       'na_sales', 'eu_sales', 'jp_sales', 'other_sales', 'global_sales',  'esrb_encoded'])
+       'na_sales', 'eu_sales', 'jp_sales', 'other_sales', 'global_sales',  'esrb_encoded']]
 
 
 # For the dropdown list
