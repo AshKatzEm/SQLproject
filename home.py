@@ -63,7 +63,7 @@ selected_features = [ele for ele in selected_features if ele not in ['game_title
        'updated', 'developers', 'genres', 'publisher',
        'na_sales', 'eu_sales', 'jp_sales', 'other_sales', 'global_sales',  'esrb_encoded']]
 
-
+selected_features = sorted(selected_features)
 # For the dropdown list
 descriptor_list = selected_features.copy()
 descriptor_list.remove("Number of Descriptors") #31
