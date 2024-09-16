@@ -10,7 +10,7 @@ import re
 
 @st.cache_resource(experimental_allow_widgets=True)
 def load_model():
-	return pickle.load(open("models/final_model_release_year.pkl", 'rb'))
+	return pickle.load(open("models/final_model2.pkl", 'rb'))
 
 
 
