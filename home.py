@@ -202,11 +202,11 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
 
 
     
-    exactIndices = []
+    exactIndices = pd.Series()
     stringDscrp = ",".join(sorted(user_descriptors))
     for i in range(len(df)):
         if df.loc[i, 'content_descriptors'] == stringDscrp:
-            exactIndices.append(i)
+            exactIndices.append(pd.Series(i))
 
     if date:
         exactIndices = exactIndices.intersection(df[df['release_year']==int(date)].index)
@@ -223,7 +223,7 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
 
 
 
-    includeIndices = []
+    includeIndices = pd.Series()
     for c in user_descriptors:
         if len(includeIndices)>0: 
             includeIndices = includeIndices.intersection(df[df[c]==1].index)
