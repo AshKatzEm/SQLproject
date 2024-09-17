@@ -94,7 +94,7 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
 
     y_pred = final_model.predict(new_game_df)
     
-    st.write("The model predicted that your game will be")
+    st.write("The model predicted that your game will be", y_pred)
 
     if(y_pred == "E" or y_pred==0):
         st.image('images/e_rating.png', width=50)
