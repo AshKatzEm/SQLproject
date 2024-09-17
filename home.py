@@ -177,29 +177,9 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
 
     # display graph
     st.plotly_chart(fig, use_container_width=True)
-
-    # maybe there is a way to sort and to get rid of the key
-
-    # also maybe sort by percent
-
-    # or sort by proper rating order
-
-    # would be nice to set Axes so it is always at max 100
-
   
 
     st.balloons()
-    # there were this many game with those descriptors:  len of query
-    # these are their names, descriptor cell, and ratings: Get indices of each element in the quesry
-
-
-
-
-
-
-
-
-
 
     
     exactIndices = []
@@ -219,11 +199,6 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
         st.write(df.iloc[exactIndices])
 
     
-
-
-
-
-
     includeIndices = pd.Series()
     for c in user_descriptors:
         if len(includeIndices)>0: 
@@ -246,5 +221,5 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
                 
 else:
     if clicked:
-        st.write("Your release date is not formatted correctly")
+        st.write("Your release year is not formatted correctly")
 
