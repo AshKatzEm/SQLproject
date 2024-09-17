@@ -10,8 +10,7 @@ import re
 
 @st.cache_resource(experimental_allow_widgets=True)
 def load_model():
-	return pickle.load(open("models/final_model2.pkl", 'rb'))
-
+    return pickle.load(open("models/final_model2.pkl", 'rb'))
 
 
 st.set_page_config(
@@ -31,12 +30,10 @@ st.write("This is a website made to showcase a model to predict the ESRB ratings
 
 
 
-
 # Load the model you already created...
 final_model = load_model()
 
 # Begin user inputs
-
 
 
 
@@ -46,13 +43,11 @@ df = pd.read_csv(cleaned_data)
 
 
 
-
 st.subheader('Rating Predictor.')
 
 st.write("Below you can enter the descriptors of a potential game and your input will be fed into the model and the prediction will be displayed")
 
 st.write("If you want to see the prediction for a game without any descriptors, just fill in the release date and hit the predictor button")
-
 
 
 
@@ -79,7 +74,6 @@ date = st.text_input(label='What year was the game released? YYYY')
 clicked = st.button('Try out the Predictor?')
 
 
-
 if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
 
     #create empty df
@@ -97,8 +91,8 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
         new_game_df.loc[0,descriptor] =1
     
     
-    
-
+    print(new_game_df.columns)
+    print(final_model)
     y_pred = final_model.predict(new_game_df)
     
     st.write("The model predicted that your game will be")
@@ -121,7 +115,6 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
     else:
         st.write("Error")
 
-
     y_pred_proba = final_model.predict_proba(new_game_df)
     
     st.write("The probability for each of the categories in order of E, ET, M and T are")
@@ -142,7 +135,6 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
     for num in list_prob:
         probs.append(num*100)
 
-
     # swapping the T and M probablilities
 
     #st.write(probs)
@@ -151,7 +143,6 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
     #st.write(probs[3])
 
     probs[2], probs[3] = probs[3], probs[2],
-
 
 
     paired_vals = list(zip(probs, ratings))
