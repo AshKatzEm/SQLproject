@@ -92,7 +92,10 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
     
     
     print(new_game_df.columns)
+    st.write(user_descriptors)
+    st.write(new_game_df.columns)
     print(final_model)
+    st.write(final_model)
     y_pred = final_model.predict(new_game_df)
     
     st.write("The model predicted that your game will be")
@@ -190,6 +193,9 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
   
 
     st.balloons()
+
+
+    
 else:
     if clicked:
         st.write("Your release date is not formatted correctly")
