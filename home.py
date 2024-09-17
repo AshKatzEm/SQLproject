@@ -191,21 +191,56 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
     st.balloons()
     # there were this many game with those descriptors:  len of query
     # these are their names, descriptor cell, and ratings: Get indices of each element in the quesry
-    resultIndices = []
-    for c in user_descriptors:
-        if len(resultIndices)>0: 
-            resultIndices = resultIndices.intersection(df[df[c]==1].index)
-        else:
-            resultIndices=df[df[c]==1].index
+
+
+
+
+
+
+
+
+
+
+    
+    exactIndices = []
+    stringDscrp = ",".join(sorted(user_descriptors))
+    for i in range(len(df)):
+        if df.loc[i, 'content_descriptors'] == stringDscrp:
+            exactIndices.append(i)
 
     if date:
-        resultIndices = resultIndices.intersection(df[df['release_year']==int(date)].index)
-        st.write("These are the games which have exactly ", ' and '.join(user_descriptors), " from ", date)
-        st.write(df.iloc[resultIndices])
+        exactIndices = exactIndices.intersection(df[df['release_year']==int(date)].index)
+        st.write("These are the games which contain nothing but ", ' and '.join(user_descriptors), " from ", date)
+        st.write(df.iloc[exactIndices])
 
     else:
-        st.write("These are the games which have exactly ", ' and '.join(user_descriptors))
-        st.write(df.iloc[resultIndices])
+        st.write("These are the games which contain ", ' and '.join(user_descriptors))
+        st.write(df.iloc[exactIndices])
+
+    
+
+
+
+
+
+    includeIndices = []
+    for c in user_descriptors:
+        if len(includeIndices)>0: 
+            includeIndices = includeIndices.intersection(df[df[c]==1].index)
+        else:
+            includeIndices=df[df[c]==1].index
+
+    if date:
+        includeIndices = includeIndices.intersection(df[df['release_year']==int(date)].index)
+        st.write("These are the games which contain ", ' and '.join(user_descriptors), " from ", date)
+        st.write(df.iloc[includeIndices])
+
+    else:
+        st.write("These are the games which contain ", ' and '.join(user_descriptors))
+        st.write(df.iloc[includeIndices])
+
+
+
                 
                 
 else:
