@@ -200,11 +200,11 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
 
     if date:
         resultIndices = resultIndices.intersection(df[df['release_year']==int(date)].index)
-        st.write("These are the games which have ", ', '.join(user_descriptors), " from ", date)
+        st.write("These are the games which have exactly ", ' and '.join(user_descriptors), " from ", date)
         st.write(df.iloc[resultIndices])
 
     else:
-        st.write("These are the games which have ", ', '.join(user_descriptors))
+        st.write("These are the games which have exactly ", ' and '.join(user_descriptors))
         st.write(df.iloc[resultIndices])
                 
                 
