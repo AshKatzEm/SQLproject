@@ -91,7 +91,7 @@ if (clicked) and re.compile("[1-2][0-9][0-9][0-9]").match(date):
         new_game_df.loc[0,descriptor] =1
     
     
-
+    st.write(new_game_df)
     y_pred = final_model.predict(new_game_df)
     
     st.write("The model predicted that your game will be", y_pred)
